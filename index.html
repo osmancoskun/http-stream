@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>APT Update Progress</title>
+</head>
+<body>
+    <h1>Command History</h1>
+    <pre id="output"></pre>
+
+    <script>
+        const outputElement = document.getElementById("output");
+        const eventSource = new EventSource("http://localhost:5000/update");
+
+        eventSource.onmessage = function(event) {
+            const data = event.data + '\n';
+            outputElement.textContent += data;
+        };
+
+        eventSource.onerror = function(event) {
+            console.error("Error occurred:", event);
+            eventSource.close();
+        };
+    </script>
+</body>
+</html>
