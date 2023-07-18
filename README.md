@@ -1,4 +1,4 @@
-# http-stream
+# HTTP Stream
 ## Dependencies
 `quart`, `quart_cors`
 
